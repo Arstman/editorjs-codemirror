@@ -21,8 +21,8 @@
     "name": "Arkadiusz Klemenko",
     "email": "arek.klemenko@gmail.com"
   },
-  "dependencies": { 
-    "codemirror": "^5.49.2"
+  "dependencies": {
+    "codemirror": "^5.65.7"
   },
   "devDependencies": {
     "@babel/core": "^7.3.4",

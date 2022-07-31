@@ -8,37 +8,31 @@ const CodeMirrorEditor = window.CodeMirror || _CodeMirrorEditor
 
 require('codemirror/lib/codemirror.css')
 require('./index.css').toString()
-require('codemirror/theme/dracula.css')
-require('codemirror/theme/darcula.css')
+require('codemirror/addon/selection/mark-selection')
 
 
 require('codemirror/mode/python/python')
 require('codemirror/mode/css/css')
-require('codemirror/mode/dockerfile/dockerfile')
+require('codemirror/mode/yaml/yaml')
 require('codemirror/mode/htmlmixed/htmlmixed')
 require('codemirror/mode/markdown/markdown')
 require('codemirror/mode/javascript/javascript')
-require('codemirror/mode/php/php')
-require('codemirror/mode/r/r')
-require('codemirror/mode/sass/sass')
+require('codemirror/mode/toml/toml')
+require('codemirror/mode/rust/rust')
+require('codemirror/mode/clike/clike')
 require('codemirror/mode/sql/sql')
-require('codemirror/mode/swift/swift')
-require('codemirror/mode/vue/vue')
-require('codemirror/mode/xml/xml')
 
 const LANGUAES = { 
-  'Python': 'Pytho ',
+  'Rust': 'Rust',
+  'Python': 'python',
   'CSS': 'CSS',
   'HTML': 'htmlmixed',
-  'MarkDown': 'MarkDown', 
+  'MarkDown': 'markdown', 
   'Javascript': 'Javascript',
-  'PHP': 'PHP',
-  'R': 'R',
-  'SASS': 'sass',
+  'toml': 'toml',
+  'C-like': 'C-like',
+  'yaml': 'yaml',
   'SQL': 'sql',
-  'Swift': 'swift',
-  'Vue': 'vue',
-  'XML': 'xmls'
 }
 
 class CodeMirror {
@@ -64,7 +58,7 @@ class CodeMirror {
   }
 
   static get DEFAULT_LANGUAGE_PLACEHOLDER () {
-    return 'Python'
+    return 'Rust'
   }
 
   static get DEFAULT_FORMAT_CONFIG () {
@@ -93,7 +87,7 @@ class CodeMirror {
     this.format = config.format || CodeMirror.DEFAULT_FORMAT_CONFIG
 
     this.data = {
-      language: data.language || 'Python',
+      language: data.language || 'Rust',
       text: data.text || ''
     }
   }
@@ -145,15 +139,16 @@ class CodeMirror {
       styleActiveSelected: true,
       lineNumbers: true,
       line: false,
-      foldGutter: true,
+      foldGutter: false,
       autofocus: false,
+       autoRefresh: true,
       styleSelectedText: true,
       mode: LANGUAES[this.data.language].toLowerCase(),
       matchBrackets: true,
       showCursorWhenSelecting: true,
-      theme: 'dracula',
+      singleCursorHeightPerLine: false,
+      theme: 'default',
       autoCloseTags: true,
-      foldGutter: true,
       dragDrop: true,
       lint: true,
       extraKeys: { 'Ctrl': 'autocomplete' },

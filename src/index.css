@@ -2,15 +2,15 @@
     min-height: 200px;
     font-family: Menlo, Monaco, Consolas, Courier New, monospace;
     color: #41314e;
-    line-height: 1.6em;
-    font-size: 12px;
+    line-height: normal;
+    font-size: 0.85em !important;
     background: #f8f7fa;
     border: 1px solid #f1f1f4;
     box-shadow: none;
     white-space: pre;
     word-wrap: normal;
     overflow-x: auto;
-    resize: vertical;
+    resize: none;
 }
 
 .cdx-codemirror__language {
@@ -36,3 +36,19 @@
     border: 0;
     outline: 0;;
 }
+.CodeMirror 
+{
+  line-height:normal;
+  font-size: 0.85em !important;
+}
+
+.CodeMirror pre {
+  padding-top: 3px !important;
+  padding-bottom:3px !important;
+
+} 
+
+
+.CodeMirror-selected  { background: #000000 !important; }
+.CodeMirror-selectedtext { color: #008080 !important; }
+.styled-background { background-color: #ff7; }
